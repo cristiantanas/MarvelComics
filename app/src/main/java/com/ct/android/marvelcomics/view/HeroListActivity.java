@@ -13,7 +13,7 @@ import com.ct.android.marvelcomics.R;
 import com.ct.android.marvelcomics.model.MarvelHero;
 import com.ct.android.marvelcomics.presenter.HomePresenter;
 import com.ct.android.marvelcomics.presenter.HomePresenterImpl;
-import com.ct.android.marvelcomics.service.GetHeroesService;
+import com.ct.android.marvelcomics.service.HeroesService;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class HeroListActivity extends AppCompatActivity implements HomeView, Mar
         emptyListPlaceholder = (TextView) findViewById(R.id.list_empty);
         progressIndicator = (ProgressBar) findViewById(R.id.progress);
 
-        presenter = new HomePresenterImpl(this, new GetHeroesService());
+        presenter = new HomePresenterImpl(this, new HeroesService());
     }
 
     @Override

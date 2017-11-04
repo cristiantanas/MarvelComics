@@ -1,14 +1,21 @@
 package com.ct.android.marvelcomics.presenter;
 
+import com.ct.android.marvelcomics.model.Comic;
+import com.ct.android.marvelcomics.model.HeroEvent;
 import com.ct.android.marvelcomics.model.MarvelHero;
-import com.ct.android.marvelcomics.service.GetHeroesService;
+import com.ct.android.marvelcomics.service.HeroesService;
 import com.ct.android.marvelcomics.view.DetailView;
 
-public class DetailPresenterImpl implements DetailPresenter, GetHeroesService.OnGetHeroByIdFinishedListener {
-    private DetailView detailView;
-    private GetHeroesService heroesService;
+import java.util.List;
 
-    public DetailPresenterImpl(DetailView view, GetHeroesService service) {
+public class DetailPresenterImpl implements DetailPresenter,
+        HeroesService.OnGetHeroByIdFinishedListener,
+        HeroesService.OnGetComicsFinishedListener,
+        HeroesService.OnGetEventsFinishedListener {
+    private DetailView detailView;
+    private HeroesService heroesService;
+
+    public DetailPresenterImpl(DetailView view, HeroesService service) {
         detailView = view;
         heroesService = service;
     }
@@ -22,15 +29,39 @@ public class DetailPresenterImpl implements DetailPresenter, GetHeroesService.On
     }
 
     @Override
+    public void onComicsSectionSelected(int heroId) {
+        heroesService.getCharacterComics(heroId, this);
+    }
+
+    @Override
+    public void onEventsSectionSelected(int heroId) {
+        heroesService.getCharacterEvents(heroId, this);
+    }
+
+    @Override
     public void onDestroy() {
         detailView = null;
     }
 
     @Override
-    public void onResponse(MarvelHero hero) {
+    public void onHeroResponse(MarvelHero hero) {
         if ( detailView != null ) {
             detailView.updateView(hero);
             detailView.hideProgress();
+        }
+    }
+
+    @Override
+    public void onComicResponse(List<Comic> comics) {
+        if ( detailView != null ) {
+            detailView.updateComics(comics);
+        }
+    }
+
+    @Override
+    public void onEventResponse(List<HeroEvent> events) {
+        if ( detailView != null ) {
+            detailView.updateEvents(events);
         }
     }
 

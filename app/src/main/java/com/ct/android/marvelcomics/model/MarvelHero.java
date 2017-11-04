@@ -7,6 +7,10 @@ public class MarvelHero {
     private int id;
     private String name;
     private String description;
+    private Date modified;
+    private Thumbnail thumbnail;
+    private ComicList comics;
+    private EventList events;
 
     public int getId() {
         return id;
@@ -48,32 +52,19 @@ public class MarvelHero {
         this.thumbnail = thumbnail;
     }
 
-    private Date modified;
-    private Thumbnail thumbnail;
+    public ComicList getComics() {
+        return comics;
+    }
 
-    public class Thumbnail {
-        private String path;
+    public void setComics(ComicList comics) {
+        this.comics = comics;
+    }
 
-        public String getPath() {
-            return path;
-        }
+    public EventList getEvents() {
+        return events;
+    }
 
-        public void setPath(String path) {
-            this.path = path;
-        }
-
-        public String getExtension() {
-            return extension;
-        }
-
-        public void setExtension(String extension) {
-            this.extension = extension;
-        }
-
-        private String extension;
-
-        public String getFullPath() {
-            return path + "." + extension;
-        }
+    public void setEvents(EventList events) {
+        this.events = events;
     }
 }

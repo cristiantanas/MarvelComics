@@ -2,16 +2,16 @@ package com.ct.android.marvelcomics.presenter;
 
 
 import com.ct.android.marvelcomics.model.MarvelHero;
-import com.ct.android.marvelcomics.service.GetHeroesService;
+import com.ct.android.marvelcomics.service.HeroesService;
 import com.ct.android.marvelcomics.view.HomeView;
 
 import java.util.List;
 
-public class HomePresenterImpl implements HomePresenter, GetHeroesService.OnGetHeroesFinishedListener {
+public class HomePresenterImpl implements HomePresenter, HeroesService.OnGetHeroesFinishedListener {
     private HomeView homeView;
-    private GetHeroesService heroesService;
+    private HeroesService heroesService;
 
-    public HomePresenterImpl(HomeView view, GetHeroesService service) {
+    public HomePresenterImpl(HomeView view, HeroesService service) {
         this.homeView = view;
         this.heroesService = service;
     }
@@ -30,7 +30,7 @@ public class HomePresenterImpl implements HomePresenter, GetHeroesService.OnGetH
     }
 
     @Override
-    public void onResponse(List<MarvelHero> heroes) {
+    public void onHeroResponse(List<MarvelHero> heroes) {
         if ( homeView != null ) {
             homeView.updateView(heroes);
             homeView.hideProgress();

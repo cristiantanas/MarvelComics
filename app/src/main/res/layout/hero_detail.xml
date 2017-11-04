@@ -4,8 +4,9 @@
     style="?android:attr/textAppearanceLarge"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.ct.android.marvelcomics.view.HeroDetailActivity" >
+    tools:context="com.ct.android.marvelcomics.view.HeroDetailFragment" >
 
     <ProgressBar
         android:id="@+id/progress"
@@ -14,15 +15,74 @@
         android:layout_gravity="start"
         android:visibility="gone" />
 
-    <CheckedTextView
-        android:id="@+id/comicsSection"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/hero_description"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_marginBottom="@dimen/text_margin"/>
 
-    <CheckedTextView
-        android:id="@+id/eventsSection"
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_marginBottom="@dimen/text_margin"
+        android:textStyle="bold"
+        android:text="@string/links_lbl"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/text_margin">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_lbl"
+            android:layout_marginEnd="8dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wiki_lbl"
+            android:layout_marginEnd="8dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/comics_lbl"
+            android:layout_marginEnd="8dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:text="@string/resources_lbl"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <CheckedTextView
+            android:id="@+id/comicsSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/text_margin"/>
+
+        <CheckedTextView
+            android:id="@+id/eventsSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/text_margin"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/resources"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin">
+
+    </FrameLayout>
 </LinearLayout>

@@ -3,4 +3,11 @@
     <string name="title_hero_detail">Hero Detail</string>
     <string name="hero_picture_cd">Hero picture</string>
     <string name="no_heroes">No heroes on duty right now.</string>
+    <string name="comics_lbl"> Comics</string>
+    <string name="events_lbl"> Events</string>
+    <string name="no_items">No items</string>
+    <string name="links_lbl">Links</string>
+    <string name="details_lbl">Details</string>
+    <string name="resources_lbl">Resources</string>
+    <string name="wiki_lbl">Wiki</string>
 </resources>
