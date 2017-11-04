@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Marvel Comics</string>
+    <string name="title_hero_detail">Hero Detail</string>
+    <string name="hero_picture_cd">Hero picture</string>
+    <string name="no_heroes">No heroes on duty right now.</string>
+</resources>
