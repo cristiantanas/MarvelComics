@@ -25,6 +25,14 @@ public class HomePresenterImpl implements HomePresenter, HeroesService.OnGetHero
     }
 
     @Override
+    public void search(String searchParam) {
+        if ( homeView != null ) {
+            homeView.showProgress();
+            heroesService.searchHeroByName(searchParam, this);
+        }
+    }
+
+    @Override
     public void onDestroy() {
         homeView = null;
     }

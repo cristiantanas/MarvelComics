@@ -92,6 +92,36 @@ public class HeroesService {
         }
     }
 
+    public void searchHeroByName(String searchParam, final OnGetHeroesFinishedListener listener) {
+        MarvelApiService apiService = api.create(MarvelApiService.class);
+
+        try {
+            long timestamp = System.currentTimeMillis();
+            String hash = md5(timestamp + ApiConfig.API_PRIVATE_KEY + ApiConfig.API_KEY);
+
+            Call<CharacterApiResponse> call = apiService.searchCharacterByName(searchParam, timestamp, ApiConfig.API_KEY, hash);
+            call.enqueue(new Callback<CharacterApiResponse>() {
+                @Override
+                public void onResponse(Call<CharacterApiResponse> call, Response<CharacterApiResponse> response) {
+                    List<MarvelHero> heroes = new ArrayList<>();
+                    CharacterApiResponse responseBody = response.body();
+                    if ( responseBody != null ) {
+                        CharacterApiResponse.Data responseData = responseBody.getData();
+                        heroes = responseData != null ? responseData.getResults() : new ArrayList<MarvelHero>();
+                    }
+                    listener.onHeroResponse(heroes);
+                }
+
+                @Override
+                public void onFailure(Call<CharacterApiResponse> call, Throwable t) {
+                    listener.onFailure(t.getMessage());
+                }
+            });
+        } catch (NoSuchAlgorithmException e) {
+            listener.onFailure(e.getMessage());
+        }
+    }
+
     public void getCharacterComics(int heroId, final OnGetComicsFinishedListener listener) {
         MarvelApiService apiService = api.create(MarvelApiService.class);
 

@@ -17,6 +17,11 @@ public interface MarvelApiService {
     Call<CharacterApiResponse> getCharacters(@Query("ts") long timestamp, @Query("apikey") String apiKey,
                                              @Query("hash") String hash);
 
+    @GET("v1/public/characters")
+    Call<CharacterApiResponse> searchCharacterByName(@Query("nameStartsWith") String nameStartsWith,
+                                                     @Query("ts") long timestamp,
+                                                     @Query("apikey") String apiKey, @Query("hash") String hash);
+
     @GET("v1/public/characters/{characterId}")
     Call<CharacterApiResponse> getCharacterById(@Path("characterId") int characterId, @Query("ts") long timestamp,
                                                 @Query("apikey") String apiKey, @Query("hash") String hash);

@@ -10,4 +10,6 @@
     <string name="details_lbl">Details</string>
     <string name="resources_lbl">Resources</string>
     <string name="wiki_lbl">Wiki</string>
+    <string name="search_lbl">Search</string>
+    <string name="search_hint_lbl">Search your favourite hero</string>
 </resources>
