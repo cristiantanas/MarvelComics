@@ -1,5 +1,6 @@
 package com.ct.android.marvelcomics.service;
 
+import com.ct.android.marvelcomics.BuildConfig;
 import com.ct.android.marvelcomics.model.CharacterApiResponse;
 import com.ct.android.marvelcomics.model.Comic;
 import com.ct.android.marvelcomics.model.ComicApiResponse;
@@ -36,9 +37,9 @@ public class HeroesService {
 
         try {
             long timestamp = System.currentTimeMillis();
-            String hash = md5(timestamp + ApiConfig.API_PRIVATE_KEY + ApiConfig.API_KEY);
+            String hash = md5(timestamp + BuildConfig.MARVEL_API_PRIVATE_KEY + BuildConfig.MARVEL_API_KEY);
 
-            Call<CharacterApiResponse> call = apiService.getCharacters(timestamp, ApiConfig.API_KEY, hash);
+            Call<CharacterApiResponse> call = apiService.getCharacters(timestamp, BuildConfig.MARVEL_API_KEY, hash);
             call.enqueue(new Callback<CharacterApiResponse>() {
                 @Override
                 public void onResponse(Call<CharacterApiResponse> call, Response<CharacterApiResponse> response) {
@@ -67,9 +68,9 @@ public class HeroesService {
 
         try {
             long timestamp = System.currentTimeMillis();
-            String hash = md5(timestamp + ApiConfig.API_PRIVATE_KEY + ApiConfig.API_KEY);
+            String hash = md5(timestamp + BuildConfig.MARVEL_API_PRIVATE_KEY + BuildConfig.MARVEL_API_KEY);
 
-            Call<CharacterApiResponse> call = apiService.getCharacterById(heroId, timestamp, ApiConfig.API_KEY, hash);
+            Call<CharacterApiResponse> call = apiService.getCharacterById(heroId, timestamp, BuildConfig.MARVEL_API_KEY, hash);
             call.enqueue(new Callback<CharacterApiResponse>() {
                 @Override
                 public void onResponse(Call<CharacterApiResponse> call, Response<CharacterApiResponse> response) {
@@ -97,9 +98,9 @@ public class HeroesService {
 
         try {
             long timestamp = System.currentTimeMillis();
-            String hash = md5(timestamp + ApiConfig.API_PRIVATE_KEY + ApiConfig.API_KEY);
+            String hash = md5(timestamp + BuildConfig.MARVEL_API_PRIVATE_KEY + BuildConfig.MARVEL_API_KEY);
 
-            Call<CharacterApiResponse> call = apiService.searchCharacterByName(searchParam, timestamp, ApiConfig.API_KEY, hash);
+            Call<CharacterApiResponse> call = apiService.searchCharacterByName(searchParam, timestamp, BuildConfig.MARVEL_API_KEY, hash);
             call.enqueue(new Callback<CharacterApiResponse>() {
                 @Override
                 public void onResponse(Call<CharacterApiResponse> call, Response<CharacterApiResponse> response) {
@@ -127,9 +128,9 @@ public class HeroesService {
 
         try {
             long timestamp = System.currentTimeMillis();
-            String hash = md5(timestamp + ApiConfig.API_PRIVATE_KEY + ApiConfig.API_KEY);
+            String hash = md5(timestamp + BuildConfig.MARVEL_API_PRIVATE_KEY + BuildConfig.MARVEL_API_KEY);
 
-            Call<ComicApiResponse> call = apiService.getCharacterComics(heroId, timestamp, ApiConfig.API_KEY, hash);
+            Call<ComicApiResponse> call = apiService.getCharacterComics(heroId, timestamp, BuildConfig.MARVEL_API_KEY, hash);
             call.enqueue(new Callback<ComicApiResponse>() {
                 @Override
                 public void onResponse(Call<ComicApiResponse> call, Response<ComicApiResponse> response) {
@@ -157,9 +158,9 @@ public class HeroesService {
 
         try {
             long timestamp = System.currentTimeMillis();
-            String hash = md5(timestamp + ApiConfig.API_PRIVATE_KEY + ApiConfig.API_KEY);
+            String hash = md5(timestamp + BuildConfig.MARVEL_API_PRIVATE_KEY + BuildConfig.MARVEL_API_KEY);
 
-            Call<EventApiResponse> call = apiService.getCharacterEvents(heroId, timestamp, ApiConfig.API_KEY, hash);
+            Call<EventApiResponse> call = apiService.getCharacterEvents(heroId, timestamp, BuildConfig.MARVEL_API_KEY, hash);
             call.enqueue(new Callback<EventApiResponse>() {
                 @Override
                 public void onResponse(Call<EventApiResponse> call, Response<EventApiResponse> response) {

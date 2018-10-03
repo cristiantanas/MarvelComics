@@ -141,7 +141,7 @@ public class HeroDetailActivity extends AppCompatActivity implements DetailView 
 
     @Override
     public void updateView(MarvelHero hero) {
-        Picasso.with(this)
+        Picasso.get()
                 .load(hero.getThumbnail().getFullPath())
                 .into(heroPicture);
         if (appBarLayout != null) {

@@ -12,6 +12,14 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        def marvelAPIPrivateKey = '\"' + System.getenv("MARVEL_API_PRIVATE_KEY") + '\"'
+        def marvelAPIKey = '\"' + System.getenv("MARVEL_API_KEY") + '\"'
+
+        debug {
+            buildConfigField "String", "MARVEL_API_PRIVATE_KEY", marvelAPIPrivateKey
+            buildConfigField "String", "MARVEL_API_KEY", marvelAPIKey
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

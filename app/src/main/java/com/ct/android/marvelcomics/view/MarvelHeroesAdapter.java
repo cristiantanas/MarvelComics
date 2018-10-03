@@ -58,7 +58,7 @@ public class MarvelHeroesAdapter extends RecyclerView.Adapter<MarvelHeroesAdapte
         holder.description.setText(item.getDescription());
 
         String thumbnailUrl = item.getThumbnail().getPath() + "." + item.getThumbnail().getExtension();
-        Picasso.with(context)
+        Picasso.get()
                 .load(thumbnailUrl)
                 .placeholder(R.mipmap.ic_launcher)
                 .error(android.R.drawable.ic_dialog_alert)
