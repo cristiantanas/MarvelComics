@@ -23,6 +23,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "MARVEL_API_PRIVATE_KEY", marvelAPIPrivateKey
+            buildConfigField "String", "MARVEL_API_KEY", marvelAPIKey
         }
     }
 }
